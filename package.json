@@ -13,6 +13,7 @@
     "autod": "autod"
   },
   "dependencies": {
+    "egg-dingtalk-robot": "^2.0.1",
     "egg": "^2.22.2",
     "egg-scripts": "^2.11.0",
     "extend": "^3.0.2"
@@ -35,7 +36,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/schwanncheung/wehook-deployer.git"
+    "url": "https://github.com/schwanncheung/webhook-deployer.git"
   },
   "author": "schwanncheung",
   "keywords": [

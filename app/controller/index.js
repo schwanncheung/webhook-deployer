@@ -49,15 +49,21 @@ class IndexController extends Controller {
         return;
       }
 
-      if (data.repository) {
-        ctx.logger.info(`repository '${data.repository.name}' received '${event}' event.`);
+      ctx.logger.info(`[${gitType}]repository '${data.repository.name}' received '${event}' event.`);
+      if (app.config.dingtalkRobot.enable) {
+        app.dingtalkRobot.sendText(app.config.dingtalkRobot.startTemplate.replace('#REPONSITORY_NAME#', data.repository.name));
       }
 
-      config.event = config.event || 'push';
+      config.event = config.event || (gitType === 'github' ? 'push' : 'PUSH HOOK');
       if (config.event === event) {
         runCmd('sh', [ config.cmdFile ], function(log) {
           ctx.logger.info(log);
+
+          if (app.config.dingtalkRobot.enable) {
+            app.dingtalkRobot.sendText(app.config.dingtalkRobot.endTemplate.replace('#REPONSITORY_NAME#', data.repository.name));
+          }
         });
+
         ctx.body = 'done';
       } else {
         ctx.status = 500;

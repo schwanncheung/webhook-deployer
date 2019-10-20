@@ -40,6 +40,14 @@ module.exports = appInfo => {
     csrf: false,
   };
 
+  // 钉钉机器人配置
+  config.dingtalkRobot = {
+    enable: false,
+    accessToken: '',
+    startTemplate: '【Webhook】开始部署 #REPONSITORY_NAME# ...',
+    endTemplate: '【Webhook】#REPOSITORY_NAME# 部署完成.'
+  };
+
   if (fs.existsSync(confFile)) {
     const conf = JSON.parse(fs.readFileSync(confFile, 'utf-8'));
     extend(true, config, conf);
