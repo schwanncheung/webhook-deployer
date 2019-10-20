@@ -1,0 +1,49 @@
+{
+  "name": "webhook-deployer",
+  "version": "1.0.0",
+  "description": "An auto deployer for github or gitlab webhook base on shell",
+  "private": false,
+  "scripts": {
+    "start": "egg-scripts start --daemon --port=7777 --title=webhook-deployer --stdout=/data/logs/webhook-deployer/master-stdout.log --stderr=/data/logs/webhook-deployer/master-stderr.log",
+    "stop": "egg-scripts stop --title=webhook-deployer",
+    "dev": "egg-bin dev --port 7777",
+    "debug": "egg-bin debug",
+    "lint": "eslint .",
+    "lint-fix": "npm run lint -- --fix",
+    "autod": "autod"
+  },
+  "dependencies": {
+    "egg": "^2.22.2",
+    "egg-scripts": "^2.11.0",
+    "extend": "^3.0.2"
+  },
+  "devDependencies": {
+    "autod": "^3.1.0",
+    "autod-egg": "^1.1.0",
+    "egg-bin": "^4.13.0",
+    "egg-ci": "^1.12.0",
+    "egg-mock": "^3.23.1",
+    "eslint": "^6.0.0",
+    "eslint-config-egg": "^7.4.1",
+    "webstorm-disable-index": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=9.10.0"
+  },
+  "ci": {
+    "version": "8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/schwanncheung/wehook-deployer.git"
+  },
+  "author": "schwanncheung",
+  "keywords": [
+    "wehook",
+    "deploy",
+    "github",
+    "gitlab",
+    "gitee",
+    "nodejs"
+  ]
+}
