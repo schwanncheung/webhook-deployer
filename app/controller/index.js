@@ -50,12 +50,13 @@ class IndexController extends Controller {
       }
 
       ctx.logger.info(`[${gitType}]repository '${data.repository.name}' received '${event}' event.`);
-      if (app.config.dingtalkRobot.enable) {
-        app.dingtalkRobot.sendText(app.config.dingtalkRobot.startTemplate.replace('#REPONSITORY_NAME#', data.repository.name));
-      }
 
       config.event = config.event || (gitType === 'github' ? 'push' : 'push hook');
       if (config.event.toLowerCase() === event.toLowerCase()) {
+        if (app.config.dingtalkRobot.enable) {
+          app.dingtalkRobot.sendText(app.config.dingtalkRobot.startTemplate.replace('#REPONSITORY_NAME#', data.repository.name));
+        }
+
         runCmd('sh', [ config.cmdFile ], function(log) {
           ctx.logger.info(log);
 
