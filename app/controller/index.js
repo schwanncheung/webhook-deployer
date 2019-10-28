@@ -54,8 +54,8 @@ class IndexController extends Controller {
         app.dingtalkRobot.sendText(app.config.dingtalkRobot.startTemplate.replace('#REPONSITORY_NAME#', data.repository.name));
       }
 
-      config.event = config.event || (gitType === 'github' ? 'push' : 'PUSH HOOK');
-      if (config.event === event) {
+      config.event = config.event || (gitType === 'github' ? 'push' : 'push hook');
+      if (config.event.toLowerCase() === event.toLowerCase()) {
         runCmd('sh', [ config.cmdFile ], function(log) {
           ctx.logger.info(log);
 
