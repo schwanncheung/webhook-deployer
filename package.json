@@ -1,7 +1,7 @@
 {
   "name": "webhook-deployer",
   "version": "1.0.0",
-  "description": "An auto deployer for github or gitlab webhook base on shell",
+  "description": "基于 github|gitlab|gitee 的 webhook 机制实现的服务器自动部署程序",
   "private": false,
   "scripts": {
     "start": "egg-scripts start --daemon --port=7777 --title=webhook-deployer --stdout=/data/logs/webhook-deployer/master-stdout.log --stderr=/data/logs/webhook-deployer/master-stderr.log",

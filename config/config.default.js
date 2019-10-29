@@ -45,7 +45,7 @@ module.exports = appInfo => {
     enable: false,
     accessToken: '',
     startTemplate: '【Webhook】开始部署 #REPONSITORY_NAME# ...',
-    endTemplate: '【Webhook】#REPOSITORY_NAME# 部署完成.'
+    endTemplate: '【Webhook】#REPOSITORY_NAME# 部署完成.',
   };
 
   if (fs.existsSync(confFile)) {
