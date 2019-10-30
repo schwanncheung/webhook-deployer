@@ -2,7 +2,9 @@
 
 基于 github|gitlab|gitee 的 webhook 机制实现的服务器自动部署程序。
 
-原理是在 github 项目的 `webhook` 设置处添加本程序服务地址作为钩子，当 github 有 push 等动作时，会 POST 请求本服务接口，程序会自动校验合法请求并执行配置的 shell 文件，由 shell 文件进行项目部署的一系列处理，因此本程序支持 nodejs、java、php 等任何能通过 shell 自动部署的项目。
+原理是在 github 项目的 `webhook` 设置处添加本程序服务地址作为钩子，当 github 有 push 等动作时，会 POST 请求本服务接口，程序会自动校验合法请求并执行配置的 shell 文件，由 shell 文件进行项目部署的一系列处理，因此本程序支持 nodejs、java、php 等任何能通过 shell 自动部署的项目，如下图：
+
+![技术构架图](assets/architecture.png)
 
 本程序采用 [nodejs](https://nodejs.org/zh-cn/) 语言基于 [egg.js](https://eggjs.org/zh-cn/) 框架开发实现，服务器需安装 Node 9+ 版本。
 
