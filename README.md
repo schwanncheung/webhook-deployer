@@ -130,3 +130,9 @@ $ npm run stop
 MIT
 
 
+## Donate
+
+开源不易，如有帮助，就打赏一杯82年的咖啡给作者压压惊吧~
+
+| ![支付宝](https://github.com/schwanncheung/blog/blob/master/assets/qr_alipay.jpg) | ![微信](https://github.com/schwanncheung/blog/blob/master/assets/qr_weixin.jpg) |
+|----|----|
