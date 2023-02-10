@@ -49,21 +49,21 @@ class IndexController extends Controller {
         return;
       }
 
-      ctx.logger.info(`[${gitType}]repository '${data.repository.name}' received '${event}' event.`);
+      ctx.logger.info(`[${gitType}]repository '${key}' received '${event}' event.`);
 
       config.event = config.event || (gitType === 'github' ? 'push' : 'push hook');
       config.args = config.args || [];
 
       if (config.event.toLowerCase() === event.toLowerCase()) {
         if (app.config.dingtalkRobot.enable) {
-          app.dingtalkRobot.sendText(app.config.dingtalkRobot.startTemplate.replace('#REPONSITORY_NAME#', data.repository.name));
+          app.dingtalkRobot.sendText(app.config.dingtalkRobot.startTemplate.replace('#REPONSITORY_NAME#', key));
         }
 
         runCmd('sh', [ config.cmdFile, ...config.args ], function(log) {
           ctx.logger.info(log);
 
           if (app.config.dingtalkRobot.enable) {
-            app.dingtalkRobot.sendText(app.config.dingtalkRobot.endTemplate.replace('#REPONSITORY_NAME#', data.repository.name));
+            app.dingtalkRobot.sendText(app.config.dingtalkRobot.endTemplate.replace('#REPONSITORY_NAME#', key));
           }
         });
 
