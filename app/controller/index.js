@@ -53,8 +53,9 @@ class IndexController extends Controller {
 
       config.event = config.event || (gitType === 'github' ? 'push' : 'push hook');
       config.args = config.args || [];
+      const refBranch = `refs/heads/${config.branch || 'release'}`;
 
-      if (config.event.toLowerCase() === event.toLowerCase()) {
+      if (config.event.toLowerCase() === event.toLowerCase() && refBranch.toLowerCase() === data.ref.toLowerCase()) {
         if (app.config.dingtalkRobot.enable) {
           app.dingtalkRobot.sendText(app.config.dingtalkRobot.startTemplate.replace('#REPONSITORY_NAME#', key));
         }
